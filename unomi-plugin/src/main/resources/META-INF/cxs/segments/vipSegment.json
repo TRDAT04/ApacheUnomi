@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "id": "VIP_CUSTOMER",
+    "name": "VIP Customers",
+    "systemTags": [
+      "default"
+    ]
+  },
+  "condition": {
+    "type": "profilePropertyCondition",
+    "parameterValues": {
+      "propertyName": "properties.isVIP",
+      "comparisonOperator": "equals",
+      "propertyValue": true
+    }
+  }
+}

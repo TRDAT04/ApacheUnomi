@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "id": "vip-rule",
+    "name": "VIP Rule - Purchase Event",
+    "description": "Trigger VIP calculation on purchase event",
+    "systemTags": [
+      "default"
+    ]
+  },
+  "condition": {
+    "type": "eventTypeCondition",
+    "parameterValues": {
+      "eventType": "purchase"
+    }
+  },
+  "actions": [
+    {
+      "parameterValues": {},
+      "type": "vip-action"
+    }
+  ]
+}

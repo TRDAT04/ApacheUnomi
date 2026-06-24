@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <service interface="org.apache.unomi.api.actions.ActionExecutor">
+        <service-properties>
+            <entry key="actionExecutorId" value="vip-action"/>
+        </service-properties>
+
+        <bean class="org.example.unomi.VipActionExecutor"/>
+    </service>
+
+</blueprint>
