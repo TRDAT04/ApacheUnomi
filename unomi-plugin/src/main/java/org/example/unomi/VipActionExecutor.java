@@ -13,33 +13,52 @@ public class VipActionExecutor implements ActionExecutor {
     private static final Logger logger =
             LoggerFactory.getLogger(VipActionExecutor.class);
 
+    private static final double VIP_THRESHOLD = 30_000_000.0;
+
     @Override
     public int execute(Action action, Event event) {
 
-        Object amountObj = event.getProperty("amount");
+        // Trong Unomi 2.x, properties của event lấy qua getProperties()
+        Object amountObj = event.getProperties() != null
+                ? event.getProperties().get("amount")
+                : null;
 
         if (amountObj == null) {
+            logger.warn("VIP plugin: event '{}' missing 'amount' property – skipped", event.getItemId());
             return EventService.NO_CHANGE;
         }
 
-        double amount = Double.parseDouble(amountObj.toString());
+        double amount;
+        try {
+            amount = Double.parseDouble(amountObj.toString());
+        } catch (NumberFormatException e) {
+            logger.error("VIP plugin: cannot parse 'amount' value '{}' – skipped", amountObj);
+            return EventService.NO_CHANGE;
+        }
+
+        if (amount <= 0) {
+            return EventService.NO_CHANGE;
+        }
 
         Profile profile = event.getProfile();
         if (profile == null) {
+            logger.warn("VIP plugin: no profile attached to event – skipped");
             return EventService.NO_CHANGE;
         }
 
-        Double total = (Double) profile.getProperty("totalSpent");
-        if (total == null) total = 0.0;
+        Object currentTotal = profile.getProperty("totalSpent");
+        double total = (currentTotal instanceof Number)
+                ? ((Number) currentTotal).doubleValue()
+                : 0.0;
 
         total += amount;
         profile.setProperty("totalSpent", total);
 
-        logger.info("VIP plugin totalSpent = {}", total);
+        logger.info("VIP plugin – profileId={} totalSpent={}", profile.getItemId(), total);
 
-        if (total >= 30_000_000) {
+        if (total >= VIP_THRESHOLD) {
             profile.setProperty("isVIP", true);
-            logger.info("PROFILE BECAME VIP!");
+            logger.info("VIP plugin – profileId={} BECAME VIP!", profile.getItemId());
         }
 
         return EventService.PROFILE_UPDATED;

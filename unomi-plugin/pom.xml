@@ -6,28 +6,29 @@
 
     <groupId>org.example</groupId>
     <artifactId>unomi-vip-plugin</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <!-- QUAN TRỌNG: Unomi plugin là OSGi bundle -->
     <packaging>bundle</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- QUAN TRỌNG: Unomi 2.4 stable nhất với Java 11 -->
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-
         <unomi.version>2.4.0</unomi.version>
     </properties>
 
     <dependencies>
+
+        <!-- logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.36</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Unomi API -->
         <dependency>
             <groupId>org.apache.unomi</groupId>
             <artifactId>unomi-api</artifactId>
@@ -55,24 +56,13 @@
 
                 <configuration>
                     <instructions>
-                        <!-- tên bundle -->
-                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-
-                        <!-- export package plugin của bạn -->
-                        <Export-Package>
-                            org.example.*
-                        </Export-Package>
-
-                        <!-- import toàn bộ dependency cần thiết -->
                         <Import-Package>
+                            !java.*,
                             *
                         </Import-Package>
-
-                        <!-- giúp Unomi nhận plugin -->
-                        <DynamicImport-Package>*</DynamicImport-Package>
-
                     </instructions>
                 </configuration>
+
             </plugin>
 
         </plugins>
