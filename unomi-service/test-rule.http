@@ -1,0 +1,54 @@
+### 1. Build & Preview Rule JSON (không đẩy lên Unomi, chỉ để xem JSON gen ra)
+POST http://localhost:8080/api/v1/rules/build
+Content-Type: application/json
+
+{
+  "ruleId": "test-purchase-rule",
+  "name": "Purchase Event Rule",
+  "description": "Tự động cộng dồn số lần mua hàng và tổng tiền khi có event purchase",
+  "eventType": "purchase",
+  "scope": "myweb",
+  "priority": 5,
+  "actions": [
+    {
+      "type": "INCREMENT",
+      "profileProperty": "purchaseCount"
+    },
+    {
+      "type": "SUM",
+      "eventProperty": "amount",
+      "profileProperty": "totalSpent",
+      "defaultValue": "0"
+    }
+  ]
+}
+
+### 2. Deploy Rule lên Unomi
+POST http://localhost:8080/api/v1/rules/deploy
+Content-Type: application/json
+
+{
+  "ruleId": "test-purchase-rule",
+  "name": "Purchase Event Rule",
+  "description": "Tự động cộng dồn số lần mua hàng và tổng tiền khi có event purchase",
+  "eventType": "purchase",
+  "scope": "myweb",
+  "priority": 5,
+  "actions": [
+    {
+      "type": "INCREMENT",
+      "profileProperty": "purchaseCount"
+    },
+    {
+      "type": "SUM",
+      "eventProperty": "amount",
+      "profileProperty": "totalSpent",
+      "defaultValue": "0"
+    }
+  ]
+}
+
+### 3. Kiểm tra xem Unomi đã nhận Rule chưa (Gọi trực tiếp Unomi API)
+# Lưu ý: Thông tin Basic Auth (karaf:karaf)
+GET http://localhost:8181/cxs/rules/test-purchase-rule
+Authorization: Basic a2FyYWY6a2FyYWY=

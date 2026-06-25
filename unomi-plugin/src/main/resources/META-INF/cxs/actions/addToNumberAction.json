@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "id": "addToNumberAction",
+    "name": "addToNumberAction",
+    "description": "Adds an event property value to a profile property",
+    "systemTags": [
+      "demographic",
+      "event"
+    ],
+    "readOnly": true
+  },
+  "actionExecutor": "addToNumberAction",
+  "parameters": [
+    {
+      "id": "eventProperty",
+      "type": "string",
+      "multivalued": false
+    },
+    {
+      "id": "profileProperty",
+      "type": "string",
+      "multivalued": false
+    },
+    {
+      "id": "storeAsProperty",
+      "type": "boolean",
+      "multivalued": false
+    },
+    {
+      "id": "fallbackValue",
+      "type": "string",
+      "multivalued": false
+    }
+  ]
+}

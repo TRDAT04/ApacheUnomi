@@ -4,10 +4,9 @@
 
     <service interface="org.apache.unomi.api.actions.ActionExecutor">
         <service-properties>
-            <entry key="actionExecutorId" value="vip-action"/>
+            <entry key="actionExecutorId" value="addToNumberAction"/>
         </service-properties>
-
-        <bean class="org.example.unomi.VipActionExecutor"/>
+        <bean class="org.example.unomi.AddToNumberAction"/>
     </service>
 
 </blueprint>

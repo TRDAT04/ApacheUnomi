@@ -7,42 +7,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Bước [4] trong CDP Ingestion Pipeline: Build payload cho Apache Unomi /cxs/eventcollector.
- *
- * Format đúng mà Unomi đang nhận:
- *
- * {
- *   "sessionId": "...",
- *   "profileId": "...",   // optional
- *   "events": [
- *     {
- *       "eventType": "purchase",
- *       "scope": "myweb",
- *       "source": {
- *         "itemType": "page",
- *         "itemId": "checkout-page",
- *         "scope": "myweb"
- *       },
- *       "target": {
- *         "itemType": "order",
- *         "itemId": "ORD-001",
- *         "scope": "myweb"
- *       },
- *       "properties": {
- *         "orderId": "ORD-001",
- *         "amount": 35000000
- *       }
- *     }
- *   ]
- * }
- */
 @Component
 public class UnomiPayloadBuilder {
 
-    /**
-     * Build body hoàn chỉnh để POST lên /cxs/eventcollector.
-     */
+
     public Map<String, Object> build(NormalizedEvent event) {
         Map<String, Object> body = new LinkedHashMap<>();
 
@@ -52,15 +20,11 @@ public class UnomiPayloadBuilder {
             body.put("profileId", event.getProfileId());
         }
 
-        // QUAN TRỌNG: Unomi của bạn đang nhận "events" là LIST
         body.put("events", List.of(buildEventNode(event)));
 
         return body;
     }
 
-    // ---------------------------------------------------------------------
-    // Private builders
-    // ---------------------------------------------------------------------
 
     private Map<String, Object> buildEventNode(NormalizedEvent event) {
         Map<String, Object> eventNode = new LinkedHashMap<>();
@@ -85,6 +49,12 @@ public class UnomiPayloadBuilder {
         item.put("itemType", itemType);
         item.put("itemId", itemId);
         item.put("scope", scope);
+        
+        // Fix Unomi 2.x NestedNullException for built-in rules (e.g., sessionPageReferrer)
+        Map<String, Object> properties = new LinkedHashMap<>();
+        properties.put("pageInfo", new LinkedHashMap<String, Object>());
+        item.put("properties", properties);
+        
         return item;
     }
 }

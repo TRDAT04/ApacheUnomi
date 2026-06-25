@@ -21,7 +21,7 @@ public record UnomiProperties(
             password = "karaf";
         }
         if (scope == null || scope.isBlank()) {
-            scope = "ecommerce";
+            scope = "myweb";
         }
         if (sourceItemId == null || sourceItemId.isBlank()) {
             sourceItemId = "my-ecommerce-site";
