@@ -1,4 +1,4 @@
-package com.unomi_service.dto;
+package com.unomi_service.tracking.dto;
 
 import lombok.Builder;
 import lombok.Getter;

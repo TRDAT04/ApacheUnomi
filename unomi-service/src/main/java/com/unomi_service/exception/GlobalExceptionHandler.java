@@ -1,7 +1,7 @@
-package com.unomi_service.controller;
+package com.unomi_service.exception;
 
-import com.unomi_service.exception.RuleDeploymentException;
-import com.unomi_service.exception.RuleValidationException;
+import com.unomi_service.rule.exception.RuleDeploymentException;
+import com.unomi_service.rule.exception.RuleValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

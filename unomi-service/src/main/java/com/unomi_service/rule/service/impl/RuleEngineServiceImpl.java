@@ -1,11 +1,19 @@
-package com.unomi_service.impl;
+package com.unomi_service.rule.service.impl;
 
-import com.unomi_service.config.RuleConfig;
+import com.unomi_service.rule.service.UnomiRuleBuilder;
+
+import com.unomi_service.rule.service.RuleValidator;
+
+import com.unomi_service.rule.dto.ValidationResult;
+
+import com.unomi_service.rule.dto.DeployResult;
+
+import com.unomi_service.rule.config.RuleConfig;
 import com.unomi_service.config.UnomiProperties;
-import com.unomi_service.exception.RuleDeploymentException;
-import com.unomi_service.exception.RuleValidationException;
-import com.unomi_service.rule.*;
-import com.unomi_service.service.RuleEngineService;
+import com.unomi_service.rule.exception.RuleDeploymentException;
+import com.unomi_service.rule.exception.RuleValidationException;
+
+import com.unomi_service.rule.service.RuleEngineService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

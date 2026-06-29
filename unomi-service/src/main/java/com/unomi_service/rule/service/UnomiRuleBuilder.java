@@ -1,7 +1,7 @@
-package com.unomi_service.rule;
+package com.unomi_service.rule.service;
 
-import com.unomi_service.config.RuleActionConfig;
-import com.unomi_service.config.RuleConfig;
+import com.unomi_service.rule.config.RuleActionConfig;
+import com.unomi_service.rule.config.RuleConfig;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 

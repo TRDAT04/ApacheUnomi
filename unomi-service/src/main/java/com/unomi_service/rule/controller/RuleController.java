@@ -1,9 +1,9 @@
-package com.unomi_service.controller;
+package com.unomi_service.rule.controller;
 
-import com.unomi_service.rule.DeployResult;
-import com.unomi_service.config.RuleConfig;
-import com.unomi_service.service.RuleEngineService;
-import com.unomi_service.rule.ValidationResult;
+import com.unomi_service.rule.dto.DeployResult;
+import com.unomi_service.rule.config.RuleConfig;
+import com.unomi_service.rule.service.RuleEngineService;
+import com.unomi_service.rule.dto.ValidationResult;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

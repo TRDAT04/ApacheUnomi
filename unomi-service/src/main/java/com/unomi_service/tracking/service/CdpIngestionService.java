@@ -1,9 +1,9 @@
-package com.unomi_service.service;
+package com.unomi_service.tracking.service;
 
 import com.unomi_service.config.UnomiProperties;
-import com.unomi_service.dto.NormalizedEvent;
-import com.unomi_service.dto.TrackEventRequest;
-import com.unomi_service.dto.TrackResponse;
+import com.unomi_service.tracking.dto.NormalizedEvent;
+import com.unomi_service.tracking.dto.TrackEventRequest;
+import com.unomi_service.tracking.dto.TrackResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

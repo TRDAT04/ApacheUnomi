@@ -1,4 +1,4 @@
-package com.unomi_service.exception;
+package com.unomi_service.rule.exception;
 
 import lombok.Getter;
 

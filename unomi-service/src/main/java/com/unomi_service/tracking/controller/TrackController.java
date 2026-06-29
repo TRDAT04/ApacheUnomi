@@ -1,8 +1,8 @@
-package com.unomi_service.controller;
+package com.unomi_service.tracking.controller;
 
-import com.unomi_service.dto.TrackEventRequest;
-import com.unomi_service.dto.TrackResponse;
-import com.unomi_service.service.CdpIngestionService;
+import com.unomi_service.tracking.dto.TrackEventRequest;
+import com.unomi_service.tracking.dto.TrackResponse;
+import com.unomi_service.tracking.service.CdpIngestionService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.unomi_service.dto;
+package com.unomi_service.tracking.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

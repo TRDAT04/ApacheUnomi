@@ -1,8 +1,8 @@
-package com.unomi_service.service;
+package com.unomi_service.rule.service;
 
-import com.unomi_service.config.RuleConfig;
-import com.unomi_service.rule.DeployResult;
-import com.unomi_service.rule.ValidationResult;
+import com.unomi_service.rule.config.RuleConfig;
+import com.unomi_service.rule.dto.DeployResult;
+import com.unomi_service.rule.dto.ValidationResult;
 
 import java.util.Map;
 

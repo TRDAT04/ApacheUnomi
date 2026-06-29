@@ -1,6 +1,6 @@
-package com.unomi_service.service;
+package com.unomi_service.tracking.service;
 
-import com.unomi_service.dto.NormalizedEvent;
+import com.unomi_service.tracking.dto.NormalizedEvent;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedHashMap;
@@ -13,7 +13,6 @@ public class UnomiPayloadBuilder {
 
     public Map<String, Object> build(NormalizedEvent event) {
         Map<String, Object> body = new LinkedHashMap<>();
-
         body.put("sessionId", event.getSessionId());
 
         if (event.getProfileId() != null && !event.getProfileId().isBlank()) {
@@ -50,7 +49,6 @@ public class UnomiPayloadBuilder {
         item.put("itemId", itemId);
         item.put("scope", scope);
         
-        // Fix Unomi 2.x NestedNullException for built-in rules (e.g., sessionPageReferrer)
         Map<String, Object> properties = new LinkedHashMap<>();
         properties.put("pageInfo", new LinkedHashMap<String, Object>());
         item.put("properties", properties);

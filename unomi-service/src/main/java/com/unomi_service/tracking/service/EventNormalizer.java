@@ -1,8 +1,8 @@
-package com.unomi_service.service;
+package com.unomi_service.tracking.service;
 
 import com.unomi_service.config.UnomiProperties;
-import com.unomi_service.dto.NormalizedEvent;
-import com.unomi_service.dto.TrackEventRequest;
+import com.unomi_service.tracking.dto.NormalizedEvent;
+import com.unomi_service.tracking.dto.TrackEventRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

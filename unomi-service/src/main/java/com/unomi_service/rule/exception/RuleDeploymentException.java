@@ -1,4 +1,4 @@
-package com.unomi_service.exception;
+package com.unomi_service.rule.exception;
 
 /**
  * Exception thrown when deploying a rule to Unomi fails.

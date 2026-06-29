@@ -1,6 +1,6 @@
-package com.unomi_service.service;
+package com.unomi_service.tracking.service;
 
-import com.unomi_service.dto.NormalizedEvent;
+import com.unomi_service.tracking.dto.NormalizedEvent;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;

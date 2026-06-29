@@ -1,4 +1,4 @@
-package com.unomi_service.rule;
+package com.unomi_service.rule.dto;
 
 import java.time.Instant;
 
